@@ -19,7 +19,7 @@ export default function App() {
     setTodos(currentTodos => {
       return [
         ...currentTodos,
-        { id: crypto.randomUUID(), title, priority, completed: false },
+        { id: crypto.randomUUID(), title, completed: false, priority },
       ]
     })
   }
@@ -45,7 +45,7 @@ export default function App() {
   return (
     <>
       <NewTodoForm onSubmit={addTodo} />
-      <h1 className="header">Todo List</h1>
+      <h1 className="header">TO-DO LIST</h1>
       <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
     </>
   )

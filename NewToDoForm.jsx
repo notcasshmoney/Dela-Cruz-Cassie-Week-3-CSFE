@@ -2,38 +2,40 @@ import React, { useState } from "react";
 
 export function NewTodoForm({ onSubmit }) {
   const [newItem, setNewItem] = useState("");
-  const [priority, setPriority] = useState("");
+  const [newPriority, setNewPriority] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (newItem === "") return
-    if (!title.trim() || !priority.trim()) return;
-    onSubmit(newItem, priority);
+    if (newItem.trim === "") return
+    onSubmit(newItem, newPriority);
     setNewItem("");
-    setPriority("");
+    setNewPriority("");
   }
 
   return (
     <form onSubmit={handleSubmit} className="new-item-form">
       <div className="form-row">
-        <label htmlFor="item">New Item</label>
+        <label htmlFor="item">NEW ITEM</label>
       <input
         value={newItem}
-        onChange={event => setNewItem(event.target.value)}
+        onChange={e => setNewItem(e.target.value)}
         type="text"
-        placeholder="ENTER TO DO TITLE"
+        placeholder="ENTER TO DO ITEM"
         id="item"
       />
+
+        <label htmlFor="priority">PRIORITY #</label>
       <input
-        placeholder="ENTER PRIORITY"
-        value={priority}
-        onChange={event => setPriority(event.target.value)}
+        value={newPriority}
+        onChange={e => setNewPriority(e.target.value)}
         type="text"
-        id="item"
+        placeholder="ENTER PRIORITY #"
+        id="priority"
+        disabled={newItem.trim() === ""} // Disable inout if newItem is empthy
       />
     
       </div>
-      <button className="btn">Add Todo</button>
+      <button className="btn">ADD TO-DO</button>
     </form>
   );
 }
